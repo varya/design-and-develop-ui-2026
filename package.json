@@ -1,0 +1,11 @@
+{
+  "name": "design-and-develop-ui-2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "marked": "^15.0.12"
+  }
+}
