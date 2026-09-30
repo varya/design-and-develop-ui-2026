@@ -395,6 +395,7 @@ If on top of that we add also processes, methodology, and tools, we will have a 
 
 Note:
 A design system is something we need for relatively large organizations with a product portfolio, so that we need to ensure a coherent user experience across this product portfolio. Or sometimes for one product, but if it's large enough to respond to the same scale. For example, Facebook as a website definitely needs a design system because it's a huge website.
+
 >>>
 
 <p class="eyebrow">Design systems</p>
@@ -474,6 +475,7 @@ This is only a button. It's a very simple problem to solve to make the button co
 
 Note:
 Here are some examples of design systems to study. There are many of them, and in my job I study a lot of them to see the trends. I just highlighted a random 6, but to find new ones, I usually use the catalogs of design systems.
+
 ---
 
 <!-- .slide: id="work" class="section-open" -->
@@ -605,6 +607,7 @@ Just a remark here. When planning the API of a component, it's also good to reme
 
 Note:
 However, it's not an ideal world sometimes. What we can produce on the design side and how we express the same thing as code still mismatch. So there is some room for trade-offs here and there. For example, `isLoading` in the file, but `loading` on the attribute.
+
 ---
 
 <!-- .slide: id="governance" class="section-open" -->
@@ -782,6 +785,7 @@ When your past releases are high quality, product teams will naturally start com
 
 Note:
 Sometimes you have to push the system out. To reach hundreds of people still outside the ecosystem, you need proactive rituals like weekly clinics and quarterly planning. A significant part of a design system team's job is actively marketing the system and telling people it exists.
+
 ---
 
 <!-- .slide: id="price" -->
