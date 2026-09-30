@@ -785,7 +785,7 @@ When your past releases are high quality, product teams will naturally start com
 
 Note:
 Sometimes you have to push the system out. To reach hundreds of people still outside the ecosystem, you need proactive rituals like weekly clinics and quarterly planning. A significant part of a design system team's job is actively marketing the system and telling people it exists.
-
+ 
 ---
 
 <!-- .slide: id="price" -->
