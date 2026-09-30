@@ -83,8 +83,6 @@ I started with libraries of components about 15 years ago, before the term "desi
 Note:
 Here is what we are going to go through. I will explain the properties of large UI projects, and then what are the solutions the industry came up with. The largest part of the lecture is design systems because this is the major solution to many UI problems, particularly problems of UI production at scale. I will walk you through different things of design systems: planning and creating components, governing the system itself, operating on a business level when you are speaking to business stakeholders, and we will of course touch AI's role in the process.
 
-Say the spine in one breath: the tools were built for a smaller job, components are how we divide the work, a system is more than the library, designers and engineers share one interface, who is allowed to make it, what it costs, what AI changes, and what to study.
-
 ---
 
 <!-- .slide: id="scale" -->
@@ -332,6 +330,7 @@ Note:
 Components alone will not make it. Besides components, we would need patterns—basically something that would allow us to produce new components. This diagram is from a vocabulary analysis which I made 8 years ago. At that time, we didn't yet have the most atomic part: the variables that communicate atomic design decisions such as colors, spaces, radius of curling, and so on. We call them design tokens. They sit outside and feed the components.
 
 If we go up, having the patterns and components, we can form a pattern library.
+
 >>>
 
 <figure class="meme vocab">
@@ -357,6 +356,7 @@ Having a pattern library, we can communicate the rules to create the patterns an
 
 Note:
 Having a pattern library, we can go further and form a style guide where we include also design principles, visual language, document it all, and this will guide us towards creating interfaces.
+
 >>>
 
 <figure class="meme vocab">
