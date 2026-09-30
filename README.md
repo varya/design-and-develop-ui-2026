@@ -52,7 +52,7 @@ This writes `output/`:
 
 ## Update the hosted lecture
 
-The GitHub Action [Deploy to GitHub Pages](https://github.com/varya/design-and-develop-ui-2026/actions) watches `main` on `design-and-develop-ui-2026`. On each push it runs `npm run build` and replaces the `gh-pages` branch with `output/`.
+The GitHub Action [Deploy to GitHub Pages](https://github.com/varya/design-and-develop-ui-2026/actions) watches `main` on `design-and-develop-ui-2026`. On each push it runs `npm run build` and deploys `output/` directly to GitHub Pages using the official Actions.
 
 1. Finish the slides in this folder (usually inside `my-content`).
 2. Commit here (see below).
@@ -62,7 +62,7 @@ The GitHub Action [Deploy to GitHub Pages](https://github.com/varya/design-and-d
 
 You can also run the workflow by hand: Actions → Deploy to GitHub Pages → Run workflow.
 
-First-time Pages setup (once): repo **Settings → Pages → Deploy from a branch → `gh-pages` / root ( `/` )**.
+First-time Pages setup (once): repo **Settings → Pages → Source → GitHub Actions**.
 
 ---
 
@@ -129,4 +129,4 @@ Do not push `output/` or `node_modules/`. Do not commit generated HTML by hand. 
 | `index.html` | Reveal shell for local preview (loads `slides.md` at runtime) |
 | `theme.css` | Deck theme |
 | `build.mjs` | Compiles Markdown → static `output/index.html` |
-| `.github/workflows/gh-pages.yml` | Build on `main`, publish `output/` to `gh-pages` |
+| `.github/workflows/gh-pages.yml` | Build on `main`, publish `output/` directly to GitHub Pages |
