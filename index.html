@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Designing and Developing UI in 2026</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="./theme.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+<section class="cover">
+<!-- Source: /Users/varya/WebDev/Talks/design-and-develop-ui-2025/index.mdx -->
+
+
+
+<p class="cover-eyebrow">aalto university</p>
+<h1 class="cover-title">Designing and<br/> Developing UI in 2026</h1>
+<p class="cover-tagline">From CSS scale pain to design systems, and why AI makes the system even more necessary.</p>
+<p class="cover-meta"><strong>Varya Stepanova</strong> &nbsp;·&nbsp; 30 September 2026</p>
+</section>
+
+<section class="about-me">
+<img src="pictures/selfie.jpg" class="photo" alt="Varya Stepanova" />
+
+<h3>Varya Stepanova</h3>
+<p class="role"><strong>Design Systems Architect</strong><br/>
+<small>engineering manager, frontend architect, independent consultant</small></p>
+
+<h4>Contacts</h4>
+<div class="contacts">
+  <a href="https://bridge-the-gap.dev/" target="_blank" rel="noopener noreferrer"><svg class="btg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.13 24.412" fill="currentColor" aria-hidden="true"><path d="M0 0h47.13v24.412h-6.024v-9.54c0-6.262-2.582-9.64-7.445-9.64h-.067c-4.862 0-7.411 3.444-7.411 10.136v9.044h-6.358v-7.527c0-6.162-2.548-9.474-7.11-9.474h-.066c-4.192 0-6.54 2.948-6.54 8.017v8.984H0z"/></svg><span>Bridge-the-Gap.dev</span></a>
+  <a href="https://www.linkedin.com/in/varyastepanova/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>linkedin.com/in/varyastepanova</span></a>
+  <a href="https://varya.me" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>varya.me</span></a>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Who I am</span></div>
+<aside class="notes"><p>Hello, my name is Varya. I&#39;m a software engineer by trade. Particularly, my focus has always been on frontend development. And I always worked producing user interfaces as an engineer myself, manager for other engineers, and at the moment I&#39;m working as an independent consultant at my own agency. So with this lecture, I would like to bring you an industry perspective on how to develop user interfaces in 2026.</p>
+<p>I started with libraries of components about 15 years ago, before the term &quot;design systems&quot; even emerged. By that time, my own understanding and the community&#39;s was more technical. We were paying a lot of attention to how to code the components, how to document them. Slightly by today, I changed my focus to more process and people oriented. I realised that the biggest obstacle on the way is the gap between specialists: designers and developers, product people and business people. In the meanwhile I got a design education that helped me to see the picture at scale. Nowadays, even though I am still doing a lot of hands-on and architectural frontend work related to the design systems, I shift to engineering &amp; project management, educating, and engaging people.</p></aside>
+</section>
+
+<section>
+<!-- ========== LECTURE PATH (2026-09-22 flow) ========== -->
+<!-- High-level slides on X. A vertical exists only when that slide is already written. -->
+<!-- Planning for the other verticals is in Note: blocks. Archive of older slides stays below the blank separator. -->
+
+<p class="eyebrow">Summary</p>
+
+<div class="split">
+  <div class="tiers">
+    <a class="tier" href="#/scale">
+      <span class="tier-label">01 · Scale</span>
+      <span class="tier-title">Why large UI projects break</span>
+    </a>
+    <a class="tier t2" href="#/components">
+      <span class="tier-label">02 · Components</span>
+      <span class="tier-title">Solving problems just once</span>
+    </a>
+    <a class="tier" href="#/system">
+      <span class="tier-label">03 · System</span>
+      <span class="tier-title">From a pile of parts to a design system</span>
+    </a>
+    <a class="tier t2" href="#/work">
+      <span class="tier-label">04 · The work</span>
+      <span class="tier-title">Component APIs and breaking changes</span>
+    </a>
+  </div>
+  <div class="tiers">
+    <a class="tier" href="#/governance">
+      <span class="tier-label">05 · Governance</span>
+      <span class="tier-title">Teams and adoption</span>
+    </a>
+    <a class="tier t2" href="#/price">
+      <span class="tier-label">06 · The price</span>
+      <span class="tier-title">What you tell the people who fund it</span>
+    </a>
+    <a class="tier" href="#/ai">
+      <span class="tier-label">07 · AI</span>
+      <span class="tier-title">Produce UI, and make the system usable</span>
+    </a>
+    <a class="tier t3" href="#/study">
+      <span class="tier-label">08 · Study</span>
+      <span class="tier-title">Technologies and concepts</span>
+    </a>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Summary</span></div>
+<aside class="notes"><p>Here is what we are going to go through. I will explain the properties of large UI projects, and then what are the solutions the industry came up with. The largest part of the lecture is design systems because this is the major solution to many UI problems, particularly problems of UI production at scale. I will walk you through different things of design systems: planning and creating components, governing the system itself, operating on a business level when you are speaking to business stakeholders, and we will of course touch AI&#39;s role in the process.</p></aside>
+</section>
+
+<section>
+<section id="scale">
+<p class="eyebrow">Scale</p>
+
+<div class="blocks blocks-scale">
+  <div class="block b">
+    <span class="block-label">CSS, 1996</span>
+    <p>A way to make text bold and links underlined. We now build interfaces with it.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">JavaScript</span>
+    <p>A powerful language, with real constraints once the interface is shared.</p>
+  </div>
+  <div class="block r">
+    <span class="block-label">The mismatch</span>
+    <p>Design hands over a picture. Engineering has to make it run. The business wants it fast. There was no reliable way to scale that.</p>
+  </div>
+  <p class="blocks-conclusion">the tools were built for different jobs</p>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Scale</span></div>
+<aside class="notes"><p>Basically, what makes producing UI interfaces in the industry special is scale. And that makes us choose different solutions than we would choose for, say, our cats&#39; homepages. Why is scale such a problem? The thing is that to draw the UI in the browser, we are using technologies that were not designed for that.</p>
+<p>For example, we are using CSS, which is nowadays a 30-year-old technology. And it hasn&#39;t changed much since then. In previous lectures, I showed a piece of CSS from its very first specification, which is still a valid piece of code and can be interpreted by browsers. Basically, CSS was created to make texts bold and align them to the left or right. But nowadays we are using it for really complex interfaces.</p>
+<p>Similar things can be said about JavaScript, even though it&#39;s a bit more advanced. In JavaScript, we were supposed to operate with the DOM tree, but it turned out to be not very convenient, especially when we are working on very complex web interfaces with a lot of custom UIs. The DOM is one shared tree, listeners and state pile up, and people become afraid to change a line because they cannot see what else moves.</p>
+<p>And the last challenge listed on the slide is the mismatch in what the product and design part of the company does with what engineers need to produce. Design and product people often tend to think in views or pictures, then engineers need a very different system behind what they are building. There was no reliable way to scale that.</p></aside>
+</section>
+<section>
+<figure class="meme">
+  <img src="pictures/css-building.jpg" alt="A window whose frame has climbed the arch of a building" />
+  <figcaption>a lot of memes about css</figcaption>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Scale</span></div>
+<aside class="notes"><p>Speaking about CSS, there are a lot of memes. This funny picture very much speaks about how the intention of people who write CSS doesn&#39;t match reality.</p></aside>
+</section>
+<section>
+<div class="meme-stage">
+  <div class="relabel">
+    <img src="pictures/blinds-meme.gif" alt="Peter Griffin fights a window blind" />
+    <p class="relabel-bar"><s>CSS</s> UI production</p>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Scale</span></div>
+<aside class="notes"><p>This animation with Family Guy was often used as an illustration to developing CSS, but I can in general say it&#39;s about UI production. One confident pull, and the whole thing comes down wrong.</p></aside>
+</section>
+<section>
+<figure class="meme">
+  <img src="pictures/doctor-meme.gif" alt="A doctor taps a knee and the patient kicks" />
+  <figcaption>you touch one place. another place moves.</figcaption>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Scale</span></div>
+<aside class="notes"><p>Basically, this is how we feel operating large UI codebases: when we change one thing, it changes another thing because of how non-deterministic CSS is. You touch one place, another place moves. That is a shared UI: scoping, a stylesheet, a listener, a token used in two products.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="components" class="section-open">
+<p class="eyebrow">Components</p>
+
+<h2 class="section-open-title">Divide the work.<br />Solve each piece once.</h2>
+
+<p class="comp-def">A component is one piece</p>
+<div class="comp-parts" aria-label="Parts of a component">
+  <span>markup</span>
+  <span class="comp-parts-join" aria-hidden="true">+</span>
+  <span>style</span>
+  <span class="comp-parts-join" aria-hidden="true">+</span>
+  <span>behaviour</span>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Components</span></div>
+<aside class="notes"><p>So the industry solution to these challenges is to divide the work and tackle each piece at once. Basically, to componentize interfaces and work on each component separately, across all the technologies that were listed.</p></aside>
+</section>
+<section>
+<p class="eyebrow">JavaScript</p>
+
+<h2 class="slide-title">Without components</h2>
+
+<div class="blocks">
+  <div class="block b">
+    <span class="block-label">Reinventing</span>
+    <h3>Think up your own</h3>
+    <p>Every time you need a UI element, you have to build it from scratch.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">Inconsistency</span>
+    <h3>Different solutions</h3>
+    <p>Different developers solve the same problem in different ways.</p>
+  </div>
+  <div class="block r">
+    <span class="block-label">Maintenance</span>
+    <h3>Hard to update</h3>
+    <p>Changing a pattern requires finding and updating every custom implementation.</p>
+  </div>
+</div>
+
+<p class="closer">Without a component model, UI development doesn't scale.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Components</span></div>
+<aside class="notes"><p>Without a component model, you need to think up your own solutions for every piece. Every time you need a UI element, you have to build it from scratch, which leads to different developers solving the same problem in different ways, creating inconsistency and making maintenance a nightmare.</p></aside>
+</section>
+<section>
+<h2>Across technologies</h2>
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">JavaScript</span>
+    <p>React, Angular, Vue, Web Components.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Styles</span>
+    <p>The style travels with the piece. CSS Modules. CSS-in-JS. Utility-first: Tailwind, UnoCSS.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Browser</span>
+    <p>Custom elements, and a native <code>&lt;dialog&gt;</code>. Hiring still looks like React and Tailwind.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Components</span></div>
+<aside class="notes"><p>This componentized approach works across all the technologies which we are using in the browser. In JavaScript, whatever framework we take, we will build components and laterally interactions between these components. The same applies to CSS. There are different CSS-in-JS solutions, CSS modules, or utility frameworks like Tailwind that utilize the same idea of components. And in the browser, there are its own native components.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="system">
+<figure class="meme">
+  <img src="pictures/car-parts.jpg" alt="A car taken apart, the parts laid out on the ground" />
+  <figcaption>A pile of parts is not a car.<br />A pile of components is not a system.</figcaption>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Once we have these different parts and separate components handled, we can compose systems out of them. The set of parts alone doesn&#39;t give us a system, but it&#39;s a first step towards it. A pile of components is not a system.</p></aside>
+</section>
+<section>
+<p class="eyebrow">The reframe</p>
+
+<p class="statement">Design and UI need a systematic approach.</p>
+
+<p class="lede">A car is not a pile of parts. An interface is not a pile of pages. Products are systems. As soon as we stop perceiving them as pages, the better. (Anna Debenham)</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>It&#39;s about the same as what I already said on the previous slide. A car is not a pile of parts. An interface is not a pile of pages. Products are systems. As soon as we stop perceiving them as pages, the better.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">The old way</h2>
+
+<div class="pair">
+  <figure>
+    <img src="pictures/old-school.png" alt="A line from Design to Code to Product" />
+    <figcaption>Design, then code, then the product</figcaption>
+  </figure>
+  <figure>
+    <img src="pictures/dashed-process.png" alt="A dashed handoff between design and code" />
+    <figcaption>The handoff, drawn as a gap</figcaption>
+  </figure>
+</div>
+
+<p class="down-sign" aria-hidden="true">↓</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>What is actually the change in the process that we want to achieve? On the screen you see diagrams that illustrate the old process of creating interfaces. People thought in views, and the process was like a waterfall. Design was created for the whole view, then the view was coded, and finally it was released to the product.</p>
+<p>In our plans and dreams, the process was straightforward, but in reality, when we started to code the already made design, we faced mismatches. For example, something cannot be coded right away. There is some design breakdown which caused a redo of design, which we needed to code again. This diagram communicates that the result was postponed and postponed, and we didn&#39;t deliver it on time, or sometimes we didn&#39;t deliver it at all.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">The new way</h2>
+
+<figure class="diagram">
+  <img src="pictures/workflow-ds.png" alt="Design and engineering both pulling from one library" />
+  <figcaption>Both sides pull from one library.</figcaption>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>The new way, when we operate on different components and we have a system of them, assumes that each of them has its own development cycle. We manage to handle it much better because it&#39;s an iterative process. Every single design idea is very small, which we implement fast and bring it directly to the product. Both sides pull from one library.</p></aside>
+</section>
+<section>
+<div class="meme vocab vocab-with-tokens">
+  <div class="vocab-stage">
+    <img src="pictures/diagram-1.png?v=1" alt="Patterns containing components: typography, spacing, colours, icons, grids around buttons, inputs, header, lists, footer" />
+    <div class="fragment vocab-tokens-callout">
+      <div class="token-circle">design<br />tokens</div>
+      <svg class="token-arrow" viewBox="0 0 360 160" aria-hidden="true">
+        <defs>
+          <marker id="token-arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6 Z" fill="#01949a" />
+          </marker>
+        </defs>
+        <path
+          d="M 20 78 C 110 78, 220 118, 340 138"
+          fill="none"
+          stroke="#01949a"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          marker-end="url(#token-arrowhead)"
+        />
+      </svg>
+    </div>
+  </div>
+  <p class="meme-caption">Components sit inside patterns</p>
+  <p class="vocab-source"><a href="https://varya.me/blog/design-systems-review/">Design Systems Vocabulary — A Review of Key Terms and Concepts</a></p>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Components alone will not make it. Besides components, we would need patterns—basically something that would allow us to produce new components. This diagram is from a vocabulary analysis which I made 8 years ago. At that time, we didn&#39;t yet have the most atomic part: the variables that communicate atomic design decisions such as colors, spaces, radius of curling, and so on. We call them design tokens. They sit outside and feed the components.</p>
+<p>If we go up, having the patterns and components, we can form a pattern library.</p></aside>
+</section>
+<section>
+<figure class="meme vocab">
+  <img src="pictures/diagram-2.png?v=1" alt="Pattern library containing patterns containing components" />
+  <figcaption>A pattern library is a kit</figcaption>
+  <p class="vocab-source"><a href="https://varya.me/blog/design-systems-review/">Design Systems Vocabulary — A Review of Key Terms and Concepts</a></p>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Having a pattern library, we can communicate the rules to create the patterns and examples of existing patterns. For example, specific forms or search elements. It&#39;s a kit with rules and examples around the patterns.</p></aside>
+</section>
+<section>
+<figure class="meme vocab">
+  <img src="pictures/diagram-3.png?v=1" alt="Style guide containing a pattern library, patterns, and components" />
+  <figcaption>A style guide wraps the kit</figcaption>
+  <p class="vocab-source"><a href="https://varya.me/blog/design-systems-review/">Design Systems Vocabulary — A Review of Key Terms and Concepts</a></p>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Having a pattern library, we can go further and form a style guide where we include also design principles, visual language, document it all, and this will guide us towards creating interfaces.</p></aside>
+</section>
+<section>
+<figure class="meme vocab">
+  <img src="pictures/diagram-4.png?v=1" alt="Design systems containing a style guide, pattern library, and patterns" />
+  <figcaption>Processes, methodology, and tools around it</figcaption>
+  <p class="vocab-source"><a href="https://varya.me/blog/design-systems-review/">Design Systems Vocabulary — A Review of Key Terms and Concepts</a></p>
+</figure>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>If on top of that we add also processes, methodology, and tools, we will have a system, and this is what people call a design system. A design system is more than just the style guide.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">When we need a design system</h2>
+
+<div class="compare">
+  <div class="compare-col then">
+    <span class="compare-label">A kit is enough</span>
+    <ul>
+      <li>One or two designers who already know the pieces</li>
+      <li>One product</li>
+    </ul>
+  </div>
+  <div class="compare-col now">
+    <span class="compare-label">A system pays</span>
+    <ul>
+      <li>Other people have to be taught</li>
+      <li>Several products have to look like one company</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>A design system is something we need for relatively large organizations with a product portfolio, so that we need to ensure a coherent user experience across this product portfolio. Or sometimes for one product, but if it&#39;s large enough to respond to the same scale. For example, Facebook as a website definitely needs a design system because it&#39;s a huge website.</p></aside>
+</section>
+<section>
+<p class="eyebrow">Design systems</p>
+
+<h2 class="slide-title">What we mean by a design system</h2>
+
+<p class="statement">A systematic approach for creating, implementing, and maintaining user interfaces.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>So a design system in this case is a systematic approach for creating, implementing, and maintaining user interfaces.</p></aside>
+</section>
+<section>
+<p class="eyebrow">Why it matters</p>
+
+<h2 class="slide-title">What design systems change</h2>
+
+<div class="blocks blocks-2x2">
+  <div class="block b">
+    <span class="block-label">Product</span>
+    <h3>Consistency</h3>
+    <p>One look and feel across products. Users recognise the brand. Teams stop reinventing the same button.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">People</span>
+    <h3>Shared language</h3>
+    <p>Designers and developers stop talking past each other. Onboarding gets shorter.</p>
+  </div>
+  <div class="block r">
+    <span class="block-label">Pace</span>
+    <h3>Faster delivery</h3>
+    <p>Pre-built pieces cut design and build time. Time to market drops. More time for the real product work.</p>
+  </div>
+  <div class="block b">
+    <span class="block-label">AI</span>
+    <h3>AI agents</h3>
+    <p>A system gives the model something real to follow, instead of inventing a button.</p>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>When we have a design system, what does it change? For the product, it gives consistency. For the people working on this product, it gives a shared language so that it&#39;s easier for them to do their job, and we get faster delivery. And for AI agents, you will see at the end of the lecture how much easier it is for them as well.</p></aside>
+</section>
+<section>
+<img class="shot shot-sm" src="pictures/buttons.png" alt="Several buttons that look alike" />
+
+<p class="lede lede-center">Buttons from the same project. A real website.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Just to illustrate what kind of problem we are solving, this is a real example from a real website with some of the buttons it was offering. These are buttons from the same project, and for a user, it was always a surprise what kind of element they need to interact with. They look alike and do not behave alike.</p>
+<p>This is only a button. It&#39;s a very simple problem to solve to make the button coherent, but just scale it up to all the other interfaces and imagine what kind of mess we can have if there are just 5 different components and real websites have dozens of them.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Examples</h2>
+
+<ul class="example-grid">
+  <li><a href="https://design-system.service.gov.uk/">GOV.UK</a></li>
+  <li><a href="https://hds.hel.fi/">Helsinki</a></li>
+  <li><a href="https://designsystem.digital.gov/">USWDS</a></li>
+  <li><a href="https://m3.material.io/">Material 3</a></li>
+  <li><a href="https://carbondesignsystem.com/">Carbon</a></li>
+  <li><a href="https://polaris.shopify.com/">Polaris</a></li>
+</ul>
+
+<p class="example-catalogues">Catalogues: <a href="https://designsystems.surf/">designsystems.surf</a> · <a href="https://component.gallery/">component.gallery</a></p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">System</span></div>
+<aside class="notes"><p>Here are some examples of design systems to study. There are many of them, and in my job I study a lot of them to see the trends. I just highlighted a random 6, but to find new ones, I usually use the catalogs of design systems.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="work" class="section-open">
+<p class="eyebrow">The work</p>
+
+<h2 class="section-open-title">Two worlds.<br />One component.</h2>
+
+<p class="comp-def">Design and engineering do not share a tool, or a mental model</p>
+<div class="comp-parts" aria-label="What the component still needs">
+  <span>one anatomy</span>
+  <span class="comp-parts-join" aria-hidden="true">+</span>
+  <span>one interface</span>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The work</span></div>
+<aside class="notes"><p>What does it mean to work in a design system in general? Basically, they still have this design part and engineering part, and they need not only to coexist but also somehow work together.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">The disconnect</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Tools</span>
+    <p>Different tools.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Models</span>
+    <p>Different mental models, and different ways of talking.</p>
+  </li>
+  <li>
+    <span class="reasons-label">The org</span>
+    <p>Different structure. The work still has to meet.</p>
+  </li>
+</ol>
+
+<p class="thesis-credit">
+  <a href="https://varya.me/design-systems/aligning-ux-designers-and-ui-developers/">Aligning UX designers and UI developers</a>
+  <span>Master’s thesis · IDBM, Aalto · 2021</span>
+</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The work</span></div>
+<aside class="notes"><p>Particularly, the problem is that designers and engineers are using different tools in which they have the representation of the same product. In depth, designers and engineers even have different mental models. This was confirmed in a lot of scientific research as well.</p>
+<p>In the organization, this slightly changes, but still in many organizations, the design is in a separate department which is not much interconnected with the engineers. It&#39;s a bit illogical because basically the engineers are the ones who create the end product. So the designers who create the idea and the people who create the end product are detached from each other.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">The same anatomy, and the same API</h2>
+
+<div class="compare">
+  <div class="then">
+    <h3>In design files</h3>
+    <ul>
+      <li>Slots: leading, content, trailing</li>
+      <li>Variants of components</li>
+      <li>States: hover, disabled, focus</li>
+    </ul>
+  </div>
+  <div class="now">
+    <h3>In code</h3>
+    <ul>
+      <li>Slots / children in the API</li>
+      <li>Component API</li>
+      <li>The same states in code</li>
+    </ul>
+  </div>
+</div>
+
+<p class="lede lede-after-compare">Same structure in the design file and in the code interface.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The work</span></div>
+<aside class="notes"><p>When we have design systems, we are solving this problem so that we have the same approach to the pieces of interface from design and development perspectives. This componentized approach helps us to focus and to bring the same principles to every component. This makes it easier to ensure a coherent API of the components and the anatomy of components across the design mode of the design system and the code mode of the design system, which is the product itself.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">One interface</h2>
+
+<div class="compare">
+  <div class="then">
+    <h3>Invented names</h3>
+    <ul>
+      <li><code>isDisabled</code></li>
+      <li><code>isChecked</code></li>
+    </ul>
+  </div>
+  <div class="now">
+    <h3>Native names</h3>
+    <ul>
+      <li><code>disabled</code></li>
+      <li><code>checked</code></li>
+    </ul>
+  </div>
+</div>
+
+<p class="lede lede-after-compare">Use the same names across the system, and the same names as the HTML control. On the button and on the icon button.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The work</span></div>
+<aside class="notes"><p>Just a remark here. When planning the API of a component, it&#39;s also good to remember that it all comes down to native HTML elements, and it&#39;s good not to invent the wheel but to stay coherent with the elements which are in the W3C standard. For example, just use <code>disabled</code> and <code>checked</code> rather than <code>isDisabled</code> and <code>isChecked</code>. Use the same names across the system, and the same names as the HTML control.</p></aside>
+</section>
+<section>
+<div class="blocks blocks-scale">
+  <div class="block b">
+    <span class="block-label">Two strings</span>
+    <p><code>isLoading</code> in the file, <code>loading</code> on the attribute. Document it.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">Not a prop</span>
+    <p>Hover is a variant in the file and a state in CSS. Loading might be a prop. Someone has to decide.</p>
+  </div>
+  <div class="block r">
+    <span class="block-label">The border</span>
+    <p>It takes space in CSS. In the file it often does not. Teams fake it with an inner shadow.</p>
+  </div>
+  <p class="blocks-conclusion">and other trade-offs</p>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The work</span></div>
+<aside class="notes"><p>However, it&#39;s not an ideal world sometimes. What we can produce on the design side and how we express the same thing as code still mismatch. So there is some room for trade-offs here and there. For example, <code>isLoading</code> in the file, but <code>loading</code> on the attribute.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="governance" class="section-open">
+<p class="eyebrow">Governance</p>
+
+<h2 class="section-open-title">A library alone<br />is not enough.</h2>
+
+<p class="comp-def">Someone has to be allowed to make the system</p>
+<div class="comp-parts" aria-label="What governance needs">
+  <span>ownership</span>
+  <span class="comp-parts-join" aria-hidden="true">+</span>
+  <span>adoption</span>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>So a library alone is not enough. A huge part of design system work is design system governance. Someone has to be allowed to make the system.</p></aside>
+</section>
+<section class="governance-team-models">
+<figure class="diagram diagram-team-models">
+  <img src="pictures/team-models.png" alt="Three team models: Solitary, Central core team, and Federated community" />
+</figure>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">Solitary</span>
+    <p>One team, mostly for itself. The kit stays inside one product.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Central</span>
+    <p>A dedicated group makes parts for other teams. Decisions are fast; the group can lose touch.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Federated</span>
+    <p>People from several products decide together. It still needs staff whose job is the system.</p>
+  </li>
+</ol>
+
+<p class="vocab-source"><a href="https://medium.com/eightshapes-llc/team-models-for-scaling-a-design-system-2cf9d03be6a0">Nathan Curtis, Team Models for Scaling a Design System (2015)</a></p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>There are classic models on how design systems and design system teams are placed in their organization. Sometimes it&#39;s just the initiative of one person or an enthusiast, and they contribute to the system, and everyone else just utilizes them. In more mature cases, they have a central design system, so they already have a design system team that serves the other teams. Or some organizations experimented with federated design systems when they ensured a lot of contributions.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">A central team, plus contributors</h2>
+
+<figure class="diagram diagram-team-models">
+  <img src="pictures/team-models-central-or-federated.png" alt="Central core team versus Federated community, with or between them" />
+</figure>
+
+<p class="lede lede-center">Not a choice between the two. Successful systems invest in both.</p>
+
+<p class="vocab-source"><a href="https://nathanacurtis.substack.com/p/the-fallacy-of-federated-design-systems-23b9a9a05542">Nathan Curtis, The Fallacy of Federated Design Systems</a> · <a href="https://articles.centercentre.com/the-salesforce-team-model-for-scaling-a-design-system/">Salesforce cyclical team model</a></p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>In larger organizations, the most successful model is the combination of central and federated models. They do have a design system team, but they still are very much connected to the product so that they take the contributions.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Who the team is allowed to be</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Art direction</span>
+    <p>It can say no.</p>
+  </li>
+  <li>
+    <span class="reasons-label">A peer</span>
+    <p>It decides with the product teams.</p>
+  </li>
+  <li>
+    <span class="reasons-label">A service desk</span>
+    <p>It takes tickets.</p>
+  </li>
+</ol>
+
+<p class="lede lede-center lede-after-compare">If this is unstated, designers walk around it.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>The role of design system teams also varies in many organizations. At some companies, they are guiding the whole UI direction. At some, they work together with the product teams, and at some, they are just serving the product teams, like the decision comes from the product. If this is unstated, designers walk around it.</p></aside>
+</section>
+<section>
+<h2>They go around you</h2>
+<p class="statement">An extendable button.</p>
+
+<p class="lede">Yours had primary and secondary. They needed a menu on the side. They wrapped it, added the chevron, and shipped without asking.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>One of the large challenges is that a design system is not a law everyone should follow, and the product teams usually need changes fast. They may come up with their own system or go around the system. For example, they needed a menu on the side of a button, so they wrapped it, added the chevron, and shipped without asking.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Build with one team, then offer it on</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Ship together</span>
+    <p>Partner with one product team to build a real feature, like a chat container or a page frame. You act as one delivery partner.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Then the next</span>
+    <p>Once it's proven in production, offer this working solution to other teams instead of just making a launch announcement.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Funding</span>
+    <p>This approach ensures the system's growth is funded by and follows actual product feature needs, rather than relying on a top-down platform mandate.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>How to solve this problem? We can ship together with one team, then go to another team to extend our products. Partner with one product team to build a real feature. Once it&#39;s proven in production, offer this working solution to other teams instead of just making a launch announcement.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">They come to you</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Why</span>
+    <p>When your past releases are high quality and solve real problems, product teams will naturally start coming to you to ask for components before they try to invent their own.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Still watch</span>
+    <p>Even with organic adoption, you must actively monitor it. Use bi-annual surveys, dedicated support channels, regular office hours, and track adoption metrics.</p>
+  </li>
+  <li>
+    <span class="reasons-label">The gap</span>
+    <p>Remember that not every team will reach out. These monitoring rituals are crucial because they highlight the silent teams who never ask for help.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>When your past releases are high quality, product teams will naturally start coming to you to ask for components before they try to invent their own. But even with organic adoption, you must actively monitor it with surveys, channels, and metrics. These rituals highlight the silent teams who never ask for help.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">You go to them</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">The reach</span>
+    <p>Sometimes you have to push the system out. For example, a new public system might be adopted in six services, but hundreds of services and over 1,100 people are still outside the ecosystem.</p>
+  </li>
+  <li>
+    <span class="reasons-label">The rituals</span>
+    <p>To reach them, you need proactive rituals: hosting a weekly clinic, publishing regular update posts, and participating directly in their quarterly planning sessions.</p>
+  </li>
+  <li>
+    <span class="reasons-label">The job</span>
+    <p>A significant part of a design system team's job isn't just building components—it's actively marketing the system and telling people it exists.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Governance</span></div>
+<aside class="notes"><p>Sometimes you have to push the system out. To reach hundreds of people still outside the ecosystem, you need proactive rituals like weekly clinics and quarterly planning. A significant part of a design system team&#39;s job is actively marketing the system and telling people it exists.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="price">
+<p class="eyebrow">The price</p>
+
+<img class="shot-short" src="pictures/money.jpg" alt="" />
+
+<h2 class="slide-title">What the business can recognise</h2>
+
+<div class="blocks">
+  <div class="block b">
+    <span class="block-label">Recognisable</span>
+    <p>The product looks like one company.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">Faster</span>
+    <p>Design and development. Fewer costs. Shorter time to market.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">The rest of the time</span>
+    <p>Left for the work that is actually new.</p>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>An interesting aspect of a design system is how it is connected to the business and how people from the design system communicate to business stakeholders. Early on, when the design system as a concept was only raised, it was a problem to justify even its existence. Now the challenges are different. It often comes to the cost of the tools to use. But still, it&#39;s an interesting aspect to see how it maps to money.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Their hour, times every team</h2>
+
+<p class="statement">About 200 teams. One hour of uptake is about 200 hours.</p>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">What counts</span>
+    <p>A visual change and an interface change both count. Teams re-test.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Cheaper</span>
+    <p>Generating the code change got easier.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Not cheaper</span>
+    <p>Agreeing that nothing important broke.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>Many teams just calculate how much time the existence of a design system saved them.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Helsinki</h2>
+
+<p class="statement">One button, used 972 times.</p>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">Reach</span>
+    <p>55 services.</p>
+  </li>
+  <li>
+    <span class="reasons-label">By hand</span>
+    <p>On the order of five years, if each instance had been designed and built separately.</p>
+  </li>
+</ol>
+
+<p class="vocab-source"><a href="https://hds.hel.fi/">hds.hel.fi</a></p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>For example, Helsinki Design System, the design system of the City of Helsinki, is a public one, and they have this data public. One button was used 972 times across 55 services.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">A button, five projects, three years</h2>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">Production</span>
+    <p>10 hours to build, once</p>
+  </li>
+  <li>
+    <span class="reasons-label">Support</span>
+    <p>20 hours a year to maintain</p>
+  </li>
+  <li>
+    <span class="reasons-label">Integration</span>
+    <p>2 hours per project, if the system has it</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>The logic is very simple. You can assess how much time it would take you to create one component across the whole product portfolio if you create it separately on each of the projects, versus if you create it in the system and then pay some time to integrate it to the projects. Say we have some button which we spent 10 hours to produce and 20 hours to support, and 2 hours for integrating into services.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Same button, with numbers</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Without</span>
+    <p><code>(10h + 20h × 3y) × 5 = 350h</code></p>
+  </li>
+  <li>
+    <span class="reasons-label">With</span>
+    <p><code>(10h + 20h × 3y) + 2h × 5 = 80h</code></p>
+  </li>
+  <li>
+    <span class="reasons-label">Saved</span>
+    <p>270 hours on one button. Across that system: 752 hours, about four months.</p>
+  </li>
+</ol>
+
+<p class="lede lede-after-compare">The formula does not have to be perfect. It starts the conversation. <a href="https://varya.me/into-design-systems-2021/">Into Design Systems 2021</a></p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>So these figures you get, they&#39;re not a status report, but they buy you the meeting where you can negotiate with business stakeholders. For example, you can ask for additional resources for your team.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">What you ask them for</h2>
+
+<p class="lede">The hours open the meeting. These are the decisions.</p>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">People</span>
+    <p>Headcount whose job is the system, not a side task between tickets.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Authority</span>
+    <p>Art direction, a peer, or a service desk, and what it may refuse.</p>
+  </li>
+  <li>
+    <span class="reasons-label">A first partner</span>
+    <p>One delivery team to prove the hours, then offer it on.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Decisions on paper</span>
+    <p>What “good enough” means while features ship, and what a breaking change is.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">The price</span></div>
+<aside class="notes"><p>These figures buy you the meeting where you ask for staff, a mandate, a partner product, and written decisions. The hours open the meeting, but these are the actual decisions you need from the business stakeholders.</p></aside>
+</section>
+</section>
+
+<section>
+<section id="ai">
+<p class="eyebrow">AI</p>
+
+<h2 class="slide-title">AI has two jobs here</h2>
+
+<div class="compare">
+  <div class="compare-col then">
+    <span class="compare-label">Produce design and code</span>
+    <ul>
+      <li>Plugins, scripts, dashboards, patches</li>
+      <li>A person still has to see that it is wrong</li>
+    </ul>
+  </div>
+  <div class="compare-col now">
+    <span class="compare-label">Make the system followable</span>
+    <ul>
+      <li>Names, docs, examples, a place the agent can call</li>
+      <li>Otherwise it invents another button</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>Neither job happens because a team has Copilot. MCP is plumbing plus one pitch. It is not the moral of the lecture. The junior line stays on the review slide.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">AI in producing components</h2>
+
+<p class="lede">Producing UI components with AI is similar to general code production. Spec-driven development is currently a popular approach.</p>
+
+<p class="closer">But the more interesting aspect is what happens next.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>Here we present AI&#39;s role in producing components. This is pretty similar to general code production. What is popular now is spec-driven development, but the more interesting aspect is the following.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Review did not shrink</h2>
+
+<p class="statement">Writing got faster. Shipping did not.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>AI can produce code, but it turned out that it doesn&#39;t magically solve all our problems. We can evidence that we don&#39;t have a lot of new products shipped just because of AI. Apparently, random code production alone is not what was needed.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Without guidance, speed is just debt</h2>
+
+<p class="lede">AI tends to hallucinate and needs certain guidance in UI production as well.</p>
+
+<p class="statement">Design systems turned out to be very good at taming AI agents.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>AI tends to hallucinate and needs certain guidance in UI production as well. Apparently, design systems turned out to be very good at taming AI agents.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">A long rules file will not be followed</h2>
+
+<ol class="reasons">
+  <li>
+    <span class="reasons-label">Too long</span>
+    <p>A design file of about 300 lines gets ignored.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Hard vs soft</span>
+    <p>“Always use this template” and “you may drift here” are different. “Appointment UI with options” has to name the pattern.</p>
+  </li>
+  <li>
+    <span class="reasons-label">More text</span>
+    <p>More documentation in the window can make the inventions worse.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>Often people approach the problem of taming AI agents by trying to describe everything and give them as much context as possible. But it&#39;s not always a solution. Especially the cheaper models have a smaller context window, and they can even hallucinate more if you give them too much in instructions. So handling AI agents also needs its own systematic approach.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">AI-friendly documentation</h2>
+
+<ol class="reasons reasons-dense">
+  <li>
+    <span class="reasons-label">Contracts</span>
+    <p>Component contracts that clearly define the API and tokens.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Docs</span>
+    <p>Documentation in Markdown and <code>llms.txt</code> formats.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Tests</span>
+    <p>Automated tests that verify if the AI-generated code correctly uses the system.</p>
+  </li>
+  <li>
+    <span class="reasons-label">Skills</span>
+    <p>Provide agent skills for engineers to use the system effectively.</p>
+  </li>
+</ol>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>In the design system world, there are several solutions on how to provide documentation in a format which is friendly for AI agents. This includes component contracts and documentation in Markdown or llms.txt. Tests are also crucial to verify that the AI is actually following the system. Additionally, the design system can provide ready-made skills for engineers to use in their AI tools.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Delivering knowledge to agents</h2>
+
+<img class="shot shot-mcp" src="pictures/mcp-schema.png" alt="A host with an MCP client, connected to an MCP server, connected to tools" />
+
+<p class="lede lede-center lede-after-shot">The editor calls a server. The server calls the tools.</p>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>How do we deliver design system knowledge to the agents? Basically through an MCP server. For example, if your project has Storybook, Storybook can serve MCP and you get MCP for free.</p></aside>
+</section>
+<section>
+<h2 class="slide-title">Conclusion</h2>
+
+<div class="blocks">
+  <div class="block b">
+    <span class="block-label">Foundation</span>
+    <h3>System first</h3>
+    <p>AI needs a structured system to follow, otherwise it just generates technical debt faster.</p>
+  </div>
+  <div class="block">
+    <span class="block-label">Format</span>
+    <h3>Machine-readable</h3>
+    <p>Documentation must be adapted for AI consumption (contracts, llms.txt, MCP).</p>
+  </div>
+  <div class="block r">
+    <span class="block-label">Human</span>
+    <h3>Review remains</h3>
+    <p>AI accelerates writing, but human judgment is still required for shipping.</p>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">AI</span></div>
+<aside class="notes"><p>To conclude this AI section: AI needs a structured system to follow, otherwise it just generates technical debt faster. We need to adapt our documentation to be machine-readable. And finally, while AI accelerates writing, human judgment and review are still required for shipping.</p></aside>
+</section>
+</section>
+
+<section id="study">
+<p class="eyebrow">Study</p>
+
+<h2 class="slide-title">What to study</h2>
+
+<div class="split split-cards">
+  <div>
+    <span class="block-label">Technologies</span>
+    <ul>
+      <li>HTML, CSS, JavaScript, and enough Git to read generated code and spot a wrong workaround</li>
+      <li>A framework when there is real state. Hiring still looks like React and Tailwind</li>
+      <li>Explore new tools rather than mastering just one</li>
+    </ul>
+  </div>
+  <div>
+    <span class="block-label">Concepts</span>
+    <ul>
+      <li>Basics of design: hierarchy, colors, typography</li>
+      <li>Making decisions that AI is not good at</li>
+      <li>Collaboration with experts across disciplines</li>
+      <li>A kit, a system, and when not to start one</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer"><span class="url">designing and developing ui in 2026</span><span class="mark">Study</span></div>
+<aside class="notes"><p>When I asked industry experts what students should study, they highlighted that while AI is changing how we work, the fundamentals remain crucial. You need enough CSS and JavaScript to understand code behavior and spot bad AI workarounds. You should learn Git and version control. On the concept side, the basics of design like hierarchy and typography are more important than ever because you need to make the decisions that AI isn&#39;t good at. And finally, learn to collaborate with experts across disciplines rather than assuming you can replace them.</p></aside>
+</section>
+
+<section class="closing">
+<h2 class="closing-title">Designing and Developing UI in 2026</h2>
+<p class="closing-sub">If you want to dig into design systems, process, or how teams work with AI, drop me a line. Happy to talk.</p>
+<p class="closing-contact">
+  Varya Stepanova &nbsp;·&nbsp;
+  <a href="mailto:mail@varya.me">mail@varya.me</a> &nbsp;·&nbsp;
+  <a href="https://varya.me">varya.me</a> &nbsp;·&nbsp;
+  <a href="https://bridge-the-gap.dev/">bridge-the-gap.dev</a>
+</p>
+<aside class="notes"><p>Optional beat, only if the room has a minute, not its own slide: “When your team ships UI with AI next week, will it pull from the system, or invent another button?”</p></aside>
+</section>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    slideNumber: false,
+    width: 1280,
+    height: 800,
+    margin: 0.04,
+    minScale: 0.2,
+    maxScale: 2.0,
+    transition: 'slide',
+    transitionSpeed: 'default',
+  });
+</script>
+</body>
+</html>
